@@ -4,7 +4,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>springbootdemo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>springbootdemo</name>
@@ -27,7 +27,7 @@
 			scm:git:https://github.com/eccosjj/springbootdemo.git
 		</connection>
 		<tag>
-			HEAD
+			springbootdemo-0.0.1
 		</tag>
 	</scm>
 	<distributionManagement>
