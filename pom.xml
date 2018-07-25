@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
@@ -15,9 +14,29 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
+	<scm>
+		<!--release包需要放入的nexus或者其他maven release包的仓库url地址 -->
+		<!-- <url>https://xxxx/nexus/content/repositories/releases/</url> -->
+		<!--connection, developerConnection: 都是连接字符串，其中后者是具有write权限的scm连接 -->
+		<!--需要打包项目的git地址 -->
+		<developerConnection>scm:git:https://github.com/eccosjj/springbootdemo.git</developerConnection>
+		<!--需要打包项目的git地址 -->
+		<connection>
+			scm:git:https://github.com/eccosjj/springbootdemo.git
+		</connection>
+		<tag>
+			HEAD
+		</tag>
+	</scm>
+	<distributionManagement>
+		<repository>
+			<id>localSnap</id>
+			<name>releases</name>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -42,6 +61,19 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<!--git用户名 -->
+					<username>eccosjj</username>
+					<!--git密码 -->
+					<password>1q2w!Q@W</password>
+					<!--mvn目标指令 -->
+					<goals>-f pom.xml deploy</goals>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
